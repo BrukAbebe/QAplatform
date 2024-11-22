@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const questionApi = axios.create({
-  baseURL: "https://q-aplatform-mauve.vercel.app/api/",
+  baseURL: import.meta.env.VITE_API_BASE_URL + "/api/",
 });
 
 questionApi.interceptors.request.use(
