@@ -14,10 +14,12 @@ import { signupSchema } from "../../validations/authValidation";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { signupUser } from "../../services/authService";
+import { useToast } from "@chakra-ui/react";
 
-const SignupForm = () => {
+const SignupForm = ({ setIsSignUp }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const toast = useToast(); 
 
   const handleSubmit = async (values, { setErrors }) => {
     try {
@@ -25,8 +27,16 @@ const SignupForm = () => {
       const { token, user } = response;
 
       login(token, user);
-      navigate("/questions");
-      
+      setIsSignUp(false);
+      navigate("/signin");
+      toast({
+        title: "Registration Successful.",
+        description: "You have successfully signed up! Please log in to continue.",
+        status: "success",
+        duration: 2000, 
+        isClosable: true,
+        position: "top",
+      });
     } catch (error) {
       setErrors({ apiError: error.message });
     }

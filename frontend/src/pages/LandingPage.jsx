@@ -28,7 +28,11 @@ const LandingPage = () => {
           {isSignUp ? "Sign Up" : "Login"}
         </Heading>
 
-        {isSignUp ? <SignupForm /> : <LoginForm />}
+        {isSignUp ? (
+          <SignupForm setIsSignUp={setIsSignUp} />
+        ) : (
+          <LoginForm />
+        )}
 
         <Text mt={4} color="gray.500">
           {isSignUp ? (
