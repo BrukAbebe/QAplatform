@@ -26,6 +26,7 @@ const SignupForm = () => {
 
       login(token, user);
       navigate("/questions");
+      
     } catch (error) {
       setErrors({ apiError: error.message });
     }

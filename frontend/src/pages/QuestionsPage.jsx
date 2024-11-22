@@ -47,7 +47,7 @@ const QuestionsPage = () => {
       w="full"
       minH="100vh"
     >
-      {user && (
+      {user && user.firstName && (
         <HStack spacing={4} flexWrap="wrap" justifyContent="center">
           <Avatar
             size={{ base: "sm", md: "md" }}
